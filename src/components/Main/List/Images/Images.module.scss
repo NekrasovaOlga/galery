@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  .img {
+    width: 100%;
+  }
+  .info {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 10px 15px;
+  }
+  .likes {
+    display: flex;
+    font-size: 16px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    svg {
+      margin-right: 5px;
+    }
+  }
+}

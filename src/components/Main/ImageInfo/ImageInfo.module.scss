@@ -1,0 +1,32 @@
+.container {
+  margin: 20px 30px;
+}
+
+.container__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .img {
+    width: 80%;
+    min-height: 450px;
+  }
+  .info_img {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .link {
+      color: black;
+    }
+  }
+}
+
+.return {
+  width: 150px;
+  height: 50px;
+  background: tomato;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
