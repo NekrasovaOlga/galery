@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { URL_API, ACCESS_KEY, API_URL_LIKE } from '../../api/const';
+import { URL_API } from '../../api/const';
+import { imageRequestSuccess } from '../image/imageAction';
 
 export const LIKE_REQUEST = 'LIKE_REQUEST';
 export const LIKE_REQUEST_SUCCES = 'LIKE_REQUEST_SUCCES';
@@ -19,21 +19,22 @@ export const likeRequestError = (error) => ({
   error,
 });
 
-export const likeAuthRequest = (id) => (dispatch, getState) => {
+export const likeAuthRequest = (id, status) => (dispatch, getState) => {
   const token = getState().token.token;
   if (!id || !token) return;
-
-  console.log(token);
-  axios
-    .post(`${URL_API}/photos/${id}/like`, {
-      headers: {
-        Authorization: `bearer ${token}`,
-      },
+  fetch(`${URL_API}/photos/${id}/like`, {
+    method: `${!status ? 'post' : 'delete'}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      return response.json();
     })
-    .then(({ data }) => {
-      console.log(data);
+    .then(({ photo }) => {
+      dispatch(imageRequestSuccess(photo));
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(likeRequestError(err));
     });
 };

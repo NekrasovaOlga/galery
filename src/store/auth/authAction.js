@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { urlToken } from '../../api/auth';
 
-import { API_URL_AUTH, CODE, URL_API } from '../../api/const';
+import { CODE, URL_API } from '../../api/const';
 import { getToken } from '../../api/token';
 import { updateToken } from '../tokenReducer';
 

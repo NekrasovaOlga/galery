@@ -4,6 +4,7 @@ import {
   GALERY_REQUEST_ERROR,
   GALERY_REQUEST_SUCCESS,
   GALERY_REQUEST_UPDATE,
+  GALERY_SEARCH_SUCCESS,
 } from './galeryAction';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   page: 1,
   after: false,
   loading: true,
+  searchGalery: [],
 };
 
 export const galeryReducer = (state = initialState, action) => {
@@ -32,6 +34,14 @@ export const galeryReducer = (state = initialState, action) => {
         ...state,
         error: '',
         galery: action.galery,
+        status: 'loaded',
+        loading: false,
+      };
+    case GALERY_SEARCH_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        searchGalery: action.galery,
         status: 'loaded',
         loading: false,
       };

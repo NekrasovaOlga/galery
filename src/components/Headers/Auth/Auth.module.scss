@@ -1,0 +1,24 @@
+.logout {
+  padding-bottom: 50px;
+  border-bottom: 1px solid #c1c1c183;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .user_img {
+    border-radius: 20px;
+    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+  }
+  .logout_btn {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: tomato;
+    height: 40px;
+    border-radius: 20px;
+  }
+}
