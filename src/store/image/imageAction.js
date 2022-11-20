@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { URL_API, ACCESS_KEY } from '../../api/const';
 
 export const IMAGE_REQUEST = 'IMAGE_REQUEST';
@@ -20,14 +19,18 @@ export const imageRequestError = (error) => ({
 });
 
 export const imageAuthRequest = (id) => (dispatch, getState) => {
-  if (!id) return;
+  const token = getState().token.token;
 
-  axios(`${URL_API}/photos/${id}`, {
+  if (!id) return;
+  fetch(`${URL_API}/photos/${id}`, {
     headers: {
-      Authorization: `Client-ID ${ACCESS_KEY}`,
+      Authorization: `Client-ID ${ACCESS_KEY} ${token && `Bearer ${token}`}`,
     },
   })
-    .then(({ data }) => {
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
       dispatch(imageRequestSuccess(data));
     })
     .catch((err) => {
